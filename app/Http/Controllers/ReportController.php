@@ -27,21 +27,20 @@ class ReportController extends Controller
                 $item->aktif = $check == null ? null : $check;
                 if($item->aktif == null)
                 {
-                 }
-                else{
 
-               
-                $tgl         = date_create($check->tanggal.' '.$check->jam);
-                $tgl2        = date_create(Carbon::now()->format('Y-m-d h:i:s'));
-                $diff        = date_diff($tgl2, $tgl);
-                
-                $item->y = $diff->y;
-                $item->m = $diff->m;
-                $item->d = $diff->d;
-                $item->h = $diff->h;
-                $item->i = $diff->i;
-                $item->s = $diff->s;
-		}
+                }
+                else{
+                    $tgl         = date_create($check->tanggal.' '.$check->jam);
+                    $tgl2        = date_create(Carbon::now()->format('Y-m-d h:i:s'));
+                    $diff        = date_diff($tgl2, $tgl);
+                    
+                    $item->y = $diff->y;
+                    $item->m = $diff->m;
+                    $item->d = $diff->d;
+                    $item->h = $diff->h;
+                    $item->i = $diff->i;
+                    $item->s = $diff->s;
+		        }
                 return $item;
             });
             

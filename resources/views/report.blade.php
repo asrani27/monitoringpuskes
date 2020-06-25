@@ -116,8 +116,12 @@
                     <td>{{$no++}}</td>
                     <td>{{$item->name}}</td>
                     <td>
+                      @if($item->aktif == null)
+                      
+                      @else
                       {{$item->aktif->tanggal}} -
                       {{$item->aktif->jam}}
+                      @endif
                     </td>
                     <td>
                       @if($item->aktif == null)
