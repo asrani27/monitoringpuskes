@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     public function home()
     {
+     
         $data = Puskesmas::all()->sortBy('nama');
         $puskesmas = $data->map(function($item){
               try {
