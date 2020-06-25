@@ -23,7 +23,14 @@ class ReportController extends Controller
             $duser     = $this->user($param);
             $datauser = $duser->map(function($item)use ($param){
                 $check = DB::connection($param)->table('h_loginlog')->where('user_id', $item->username)->get()->sortByDesc('id')->first();
+
                 $item->aktif = $check == null ? null : $check;
+                if($item->aktif == null)
+                {
+                 }
+                else{
+
+               
                 $tgl         = date_create($check->tanggal.' '.$check->jam);
                 $tgl2        = date_create(Carbon::now()->format('Y-m-d h:i:s'));
                 $diff        = date_diff($tgl2, $tgl);
@@ -34,6 +41,7 @@ class ReportController extends Controller
                 $item->h = $diff->h;
                 $item->i = $diff->i;
                 $item->s = $diff->s;
+		}
                 return $item;
             });
             
