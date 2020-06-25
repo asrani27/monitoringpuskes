@@ -102,6 +102,7 @@
               <tr>
                 <th scope="col" class="border-0">#</th>
                 <th scope="col" class="border-0">Nama User</th>
+                <th scope="col" class="border-0">Waktu Login</th>
                 <th scope="col" class="border-0">Aktif</th>
                 <th scope="col" class="border-0"></th>
               </tr>
@@ -114,7 +115,29 @@
                 <tr>
                     <td>{{$no++}}</td>
                     <td>{{$item->name}}</td>
-                    <td>6 Jam Yang Lalu</td>
+                    <td>
+                      {{$item->aktif->tanggal}} -
+                      {{$item->aktif->jam}}
+                    </td>
+                    <td>
+                      @if($item->aktif == null)
+                      
+                      @else
+                        @if($item->y != 0)
+                          {{$item->y}} Tahun Yang Lalu
+                        @elseif($item->m != 0)
+                          {{$item->m}} Bulan Yang Lalu
+                        @elseif($item->d != 0)
+                          {{$item->d}} Hari Yang Lalu
+                        @elseif($item->h != 0)
+                          {{$item->h}} Jam Yang Lalu
+                        @elseif($item->i != 0)
+                          {{$item->i}} Menit Yang Lalu
+                        @elseif($item->s != 0)
+                          {{$item->s}} Detik Yang Lalu
+                        @endif
+                      @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

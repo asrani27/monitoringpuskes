@@ -19,8 +19,23 @@ class ReportController extends Controller
             $user         = $this->user($param)->count();
             $pasienMonth  = $this->pasienMonth($param);
             $jumlahDokter = $this->jumlahDokter($param);
-            $datauser     = $this->user($param);
-            $poli     = $this->jumlahPoli($param);
+            $poli         = $this->jumlahPoli($param);
+            $duser     = $this->user($param);
+            $datauser = $duser->map(function($item)use ($param){
+                $check = DB::connection($param)->table('h_loginlog')->where('user_id', $item->username)->get()->sortByDesc('id')->first();
+                $item->aktif = $check == null ? null : $check;
+                $tgl         = date_create($check->tanggal.' '.$check->jam);
+                $tgl2        = date_create(Carbon::now()->format('Y-m-d h:i:s'));
+                $diff        = date_diff($tgl2, $tgl);
+                
+                $item->y = $diff->y;
+                $item->m = $diff->m;
+                $item->d = $diff->d;
+                $item->h = $diff->h;
+                $item->i = $diff->i;
+                $item->s = $diff->s;
+                return $item;
+            });
             
             return view('report',compact('param','pasien','sevenDay','user','pasienMonth','jumlahDokter','datauser','poli'));
           } catch (\Exception $e) {
