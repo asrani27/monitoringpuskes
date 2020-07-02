@@ -12,7 +12,7 @@ class LoginController extends Controller
     {
         $login = request()->input('username');
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(Auth::attempt([$field => $login, 'password' => request()->password], true)) 
+        if(Auth::attempt([$field => $login, 'password' => request()->password], false)) 
         {
             return redirect('/home');
         } 
