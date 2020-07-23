@@ -97,11 +97,11 @@
                                 <i class="material-icons">report</i>
                               </span> Full Report 
                             </a>
-                            <button type="button" class="btn btn-white">
+                            {{-- <a href="/bug/{{$item->database}}" class="btn btn-white">
                               <span class="text-light">
-                                <i class="material-icons">edit</i>
-                              </span> Edit 
-                            </button>
+                                <i class="material-icons">List Bug</i>
+                              </span> List Bug 
+                            </a> --}}
                           </div>
                         {{-- <a href="#" class="mb-2 btn btn-xs btn-outline-accent"><i class="material-icons">edit</i></a>
                         <button type="button" class="mb-2 btn btn-sm btn-outline-info mr-1">Info</button> --}}
