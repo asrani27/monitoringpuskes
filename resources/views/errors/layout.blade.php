@@ -27,7 +27,7 @@
     <div class="bg-img1 size1 overlay1 p-t-24" style="background-image: url('images/bg01.jpg');">
     
 
-		<div class="flex-w flex-sa p-r-200 respon1"> 
+		<div class="flex-w flex-sa respon1"> 
 			<div class="bg0 wsize1 bor1 p-l-45 p-r-45 p-t-50 p-b-18 p-lr-15-sm">
 				<h3 class="l1-txt3 txt-center p-b-43">
 					Oops!! Ada Kesalahan Sistem
